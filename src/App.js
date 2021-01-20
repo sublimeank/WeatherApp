@@ -18,7 +18,7 @@ class App extends React.Component {
         if(this.state.lat !== null || this.state.long !== null) {
             this.props.fetchTemp(this.state.lat, this.state.long)
         } else {
-            findCoordinates()
+            this.findCoordinates()
         }
     }
 
