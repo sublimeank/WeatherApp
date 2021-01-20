@@ -15,6 +15,7 @@ class App extends React.Component {
         long: null
     }
     onRetryClicked = () => {
+        this.props.setDataLoading()
         if(this.state.lat !== null || this.state.long !== null) {
             this.props.fetchTemp(this.state.lat, this.state.long)
         } else {
@@ -33,9 +34,10 @@ class App extends React.Component {
                     this.props.fetchTemp(this.state.lat, this.state.long)
             },
             error => {
+                console.log("error in fetch location: ", JSON.stringify(error))
                 this.props.errorFetchingResult()
             },
-            { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+            { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 }
         )
     }
 
